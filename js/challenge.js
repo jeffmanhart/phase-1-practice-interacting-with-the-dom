@@ -1,14 +1,17 @@
 // timer increment every second
-let likeCol = {}
-let counter = document.getElementById('counter');
+const likeCol = {}
+const counter = document.getElementById('counter');
 let time = 0
+let counterTime = 0
 const timer = ()=> {
     time = setInterval(interactWithTimerUp, 1000)
 }
+  
+document.addEventListener('DOMContentLoaded', timer);
 
-interactWithTimerUp = () => counter.innerText = time++; 
+interactWithTimerUp = () => {counter.innerText = counterTime++ }
 
-interactWithTimerDown = () => counter.innerText = time--;
+interactWithTimerDown = () => counter.innerText = counterTime--;
 
 
 
@@ -52,8 +55,7 @@ pause.addEventListener('click', function () {
         heart.removeAttribute('disabled')
         pause.textContent = "pause"
     }else{
-        //TODO: clearInterval is not working
-        clearInterval(timer);
+        clearInterval(time);
         minus.setAttribute('disabled', true)
         plus.setAttribute('disabled', true)
         heart.setAttribute('disabled', true)
@@ -72,4 +74,3 @@ document.getElementById('submit').addEventListener('click', function (event){
     document.getElementById('list').appendChild(p)
     commentInput.value = ""
 } )
-timer()
